@@ -1,0 +1,29 @@
+{
+  "manifest_version": 2,
+
+  "name": "Getting started example",
+  "description": "This extension shows a Google Image search result for the current page",
+  "version": "1.0",
+
+  "browser_action": {
+    "default_icon": "resources/images/icon.png",
+    "default_popup": "index.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.torrentsmd.com/*"],
+      "css": ["inject/tmd/inject.css"],
+      "js": ["inject/jquery-3.2.1.min.js", "inject/inject.js", "inject/tmd/tmd.js"]
+    }
+  ],
+  "background": {
+    "scripts": ["bower_components/fetch/fetch.js","eventPage.js"],
+    "persistent": false
+  },
+  "permissions": [
+    "activeTab","tabs",
+    "https://ajax.googleapis.com/",
+        "https://www.torrentsmd.com/*",
+        "http://kinozal.tv/*","http://192.168.1.99:8181/gui/"
+  ]
+}
